@@ -1,0 +1,32 @@
+<html>
+<head>
+ <LINK href="./css/default.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+<div id='aguarde'>
+<img src='./imgs/loading.gif' width='120px' height='90px'/>
+</div>
+<div id='mostraDados'>
+
+</div>
+
+<button onclick='buscaDados();'>buscar Dados</button>
+</body>
+</html>
+<script src='./js/jquery-1.7.2.min.js' type='text/javascript'></script>
+<script src='./js/mustache.js' type='text/javascript'></script>
+<script src='./js/templatejs_minified.js' type='text/javascript'></script>
+
+
+<script>
+function buscaDados(){
+	template = new Template();
+	template.setDataSource("http://jreisstudio.net/retorno.php");
+	template.setTemplateFile("./template/template.html");
+	messageError = {"loadTemplate":"Erro ao Carregar Template","loadJSONSource":"Erro ao buscar Dados!"}
+	templateUtil = new TemplateUtil("#mostraDados","#aguarde",messageError);
+	templateUtil.createTemplate(template);
+	
+}
+
+</script>
